@@ -1,0 +1,24 @@
+.login__form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+    transform: translateX(0%);
+    opacity: 1;
+    transition: 0.6s all;
+    font-family: inherit;
+}
+
+.active {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.login__form p {
+    align-self: center;
+    color: #fafafa;
+    font-size: 0.8em;
+    cursor: pointer;
+}
