@@ -12,8 +12,8 @@ const LoginContainer = styled(Container)({
     gap: '10px',
     height: '100%',
     width: '100%',
-    maxWidth: '600px'
-  }
+    maxWidth: '600px',
+  },
 })
 
 const TitleContainer = styled(Container)({
@@ -23,9 +23,9 @@ const TitleContainer = styled(Container)({
     alignItems: 'center',
     color: 'rgb(233, 233, 233)',
     '& p': {
-      textAlign: 'center'
-    }
-  }
+      textAlign: 'center',
+    },
+  },
 })
 
 const FormContainer = styled(Container)({
@@ -39,22 +39,22 @@ const FormContainer = styled(Container)({
     backgroundColor: 'rgba(250, 250, 250, 0.2)',
     backdropFilter: 'blur(20px)',
     boxShadow: '0 10px 20px 10px rgba(84, 84, 84, 0.1)',
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 })
 
-const Login:FC = () => {
+const Login: FC = () => {
   const [isFormSwitched, setFormSwitched] = useState(false)
   return (
     <LoginContainer>
-      <TitleContainer >
+      <TitleContainer>
         <h1>Welcome!</h1>
         <p>Authorize to get access to all features!</p>
       </TitleContainer>
       <FormContainer>
-          <SigninForm switchState={isFormSwitched} switchForm={setFormSwitched}/>
-          <SignupForm switchState={isFormSwitched} switchForm={setFormSwitched}/>
-        </FormContainer>
+        <SigninForm switchState={isFormSwitched} switchForm={setFormSwitched} />
+        <SignupForm switchState={isFormSwitched} switchForm={setFormSwitched} />
+      </FormContainer>
     </LoginContainer>
   )
 }

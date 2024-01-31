@@ -1,22 +1,22 @@
-import { IListItem } from "."
+import { IListItem } from '.'
 
 export interface IScreenComponent {
-    data: Array<IListItem>
+  data: Array<IListItem>
 }
 
 export interface IListItemComponent {
-    key: string
-    itemData: IListItem
+  key: string
+  itemData: IListItem
 }
 
 export interface IFiltersComponent {
-    activeCounter: number
-    isAnyFinished: boolean
+  activeCounter: number
+  isAnyFinished: boolean
 }
 
 export interface ISignupForm {
-    switchState: boolean
-    switchForm: (a: boolean) => void
+  switchState: boolean
+  switchForm: (a: boolean) => void
 }
 
-export interface ISigninForm extends ISignupForm {}
+export type ISigninForm = ISignupForm

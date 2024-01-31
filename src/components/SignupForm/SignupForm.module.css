@@ -1,43 +1,42 @@
 .signup__form {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 10px;
-    width: 100%;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: 0.6s all;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  width: 100%;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: 0.6s all;
 }
 
 .signup__form label div {
-    width: 100%;
+  width: 100%;
 }
 
 .signup__form > label {
-    position: relative;
+  position: relative;
 }
 
-
-.active{
-    transform: translateX(0%);
-    opacity: 1;
+.active {
+  transform: translateX(0%);
+  opacity: 1;
 }
 
 .signup__form .error {
-    position: absolute;
-    bottom: -50%;
-    left: 50%;
-    width: 100%;
-    text-align: center;
-    font-size: 0.8em;
-    color: red;
-    transform: translateX(-50%);
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  color: red;
+  transform: translateX(-50%);
 }
 
 .signup__form p {
-    align-self: center;
-    color: #fafafa;
-    font-size: 0.8em;
-    cursor: pointer;
+  align-self: center;
+  color: #fafafa;
+  font-size: 0.8em;
+  cursor: pointer;
 }

@@ -1,12 +1,12 @@
-import { Button, Container, Typography, styled } from "@mui/material"
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { userActions } from "../../store/actions/userActions"
-import { getAuthStatus, getUserSelector } from "../../store/selectors"
-import LoginForm from "../Login/Login"
-import TodoList from "../TodoList/TodoList"
-import type { IAction, IState, IUser } from "../../types"
-import { ThunkDispatch } from "redux-thunk"
+import { Button, Container, Typography, styled } from '@mui/material'
+import { ThunkDispatch } from '@reduxjs/toolkit'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { userActions } from '../../store/actions/userActions'
+import { getAuthStatus, getUserSelector } from '../../store/selectors'
+import type { IAction, IState, IUser } from '../../types'
+import LoginForm from '../Login/Login'
+import TodoList from '../TodoList/TodoList'
 
 const AppContainer = styled(Container)({
   '&.MuiContainer-root': {
@@ -24,9 +24,9 @@ const AppContainer = styled(Container)({
       fontSize: '3em',
       color: '#fafafa',
       textTransform: 'uppercase',
-      textShadow: '2px 5px 5px rgba(84, 84, 84, 0.4)'
-    }
-  }
+      textShadow: '2px 5px 5px rgba(84, 84, 84, 0.4)',
+    },
+  },
 })
 
 const ProfileContainer = styled(Container)({
@@ -43,12 +43,12 @@ const ProfileContainer = styled(Container)({
     fontFamily: 'Montserrat',
     '& h1': {
       fontFamily: 'inherit',
-      fontSize: '1.2em'
+      fontSize: '1.2em',
     },
     '& h1:nth-of-type(2)': {
       textAlign: 'right',
       fontSize: '1.4em',
-      flexGrow: '1'
+      flexGrow: '1',
     },
     '& button': {
       border: 'none',
@@ -58,7 +58,7 @@ const ProfileContainer = styled(Container)({
       fontFamily: 'inherit',
       backgroundColor: '#789cdb',
     },
-  }
+  },
 })
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('auth_token')
-    if(token) {
+    if (token) {
       dispatch(userActions.setCurrentUser(token))
     }
   }, [])
@@ -79,33 +79,37 @@ function App() {
     dispatch(userActions.logOut())
   }
 
-  const dateStringCreator = () => {
-    return new Intl.DateTimeFormat('en-US', {
+  const dateStringCreator = () =>
+    new Intl.DateTimeFormat('en-US', {
       dateStyle: 'full',
     }).format(date)
-  }
 
   const responsiveGreeting = (date: Date) => {
     const hours = date.getHours()
-    if(hours >= 4 && hours < 12) return 'Good morning'
-    else if(hours >= 12 && hours < 16) return 'Good day'
-    else if(hours >= 16 && hours < 24) return 'Good evening'
-    else if(hours <= 0  && hours < 4) return 'Good night'
+    if (hours >= 4 && hours < 12) return 'Good morning'
+    if (hours >= 12 && hours < 16) return 'Good day'
+    if (hours >= 16 && hours < 24) return 'Good evening'
+    if (hours <= 0 && hours < 4) return 'Good night'
   }
   return (
     <AppContainer>
-      {isAuth ?
-      <>
-        <ProfileContainer>
-          <Typography variant="h1">Today is {dateStringCreator()}</Typography>
-          <Typography variant="h1">{responsiveGreeting(date)}, {user.login} !</Typography>
-          <Button onClick={logOutHandler}>Log out</Button>
-        </ProfileContainer>
-        <Typography variant="h2">Todo List</Typography>
-        <TodoList />
-      </>
-      :
-      <LoginForm/>}
+      {isAuth ? (
+        <>
+          <ProfileContainer>
+            <Typography variant="h1">
+              Today is {dateStringCreator()}
+            </Typography>
+            <Typography variant="h1">
+              {responsiveGreeting(date)}, {user.login} !
+            </Typography>
+            <Button onClick={logOutHandler}>Log out</Button>
+          </ProfileContainer>
+          <Typography variant="h2">Todo List</Typography>
+          <TodoList />
+        </>
+      ) : (
+        <LoginForm />
+      )}
     </AppContainer>
   )
 }

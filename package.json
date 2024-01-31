@@ -19,6 +19,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^1.6.2",
     "jwt-decode": "^4.0.0",
+    "prettier": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
@@ -36,13 +37,39 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.ts",
+    "lint": "eslint ./src/",
+    "lint:fix": "eslint ./src/ --fix"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "airbnb",
+      "prettier"
+    ],
+    "ignorePatterns": ["*.d.ts"],
+    "rules": {
+      "import/no-unresolved": "off",
+      "import/extensions": "off",
+      "camelcase": "warn",
+      "no-case-declarations": "off",
+      "default-param-last": "off",
+      "no-plusplus": "off",
+      "no-param-reassign": "warn",
+      "react/react-in-jsx-scope": "off",
+      "no-unused-vars": "off",
+      "react/jsx-filename-extension": "off",
+      "react/function-component-definition": "off",
+      "no-use-before-define": "off",
+      "no-shadow": "warn",
+      "consistent-return": "off",
+      "react/jsx-props-no-spreading": "off",
+      "jsx-a11y/label-has-associated-control": "warn",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-noninteractive-element-interactions": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -57,6 +84,8 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
     "typescript": "^5.3.3"
   },
   "main": "index.js",

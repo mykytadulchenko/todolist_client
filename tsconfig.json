@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "typeRoots": ["./src/types/", "./node_modules/@types"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -22,9 +18,7 @@
     "jsx": "react-jsx",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
 }

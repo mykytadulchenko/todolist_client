@@ -21,8 +21,8 @@ const FooterContainer = styled(Container)({
     '& > button': {
       textDecoration: 'underline',
       '&.hidden': {
-        transform: 'translateY(200%)'
-      }
+        transform: 'translateY(200%)',
+      },
     },
     '& button': {
       padding: '0',
@@ -39,10 +39,10 @@ const FooterContainer = styled(Container)({
         borderRadius: '4px',
       },
       '&:hover': {
-        background: 'none'
-      }
-    }
-  }
+        background: 'none',
+      },
+    },
+  },
 })
 
 const FiltersContainer = styled(Container)({
@@ -50,16 +50,16 @@ const FiltersContainer = styled(Container)({
     alignSelf: 'center',
     display: 'flex',
     gap: '10px',
-    width: 'auto'
-  }
+    width: 'auto',
+  },
 })
 
-const Filters: FC<IFiltersComponent> = ({activeCounter, isAnyFinished}) => {
+const Filters: FC<IFiltersComponent> = ({ activeCounter, isAnyFinished }) => {
   const dispatch = useDispatch<ThunkDispatch<IState, any, IAction>>()
   const user = useSelector(getUserSelector) as IUser
   const clearSelected = () => dispatch(asyncItemActions.processRemoveSelected(user as IUser))
   const changeFilter = (e: MouseEvent) => {
-    if(active.current) active.current.classList.remove('active__btn')
+    if (active.current) active.current.classList.remove('active__btn')
     active.current = e.target as HTMLButtonElement
     dispatch(itemActions.setFilter(active.current.dataset.filter as string))
     active.current.classList.add('active__btn')
@@ -67,7 +67,7 @@ const Filters: FC<IFiltersComponent> = ({activeCounter, isAnyFinished}) => {
 
   useEffect(() => {
     active.current!.classList.add('active__btn')
-    if(!isAnyFinished) clearSelectedBtn.current!.classList.add('hidden')
+    if (!isAnyFinished) clearSelectedBtn.current!.classList.add('hidden')
     else clearSelectedBtn.current!.classList.remove('hidden')
   }, [isAnyFinished])
 
@@ -76,13 +76,21 @@ const Filters: FC<IFiltersComponent> = ({activeCounter, isAnyFinished}) => {
 
   return (
     <FooterContainer>
-        <p>{`${activeCounter} tasks left`}</p>
-        <FiltersContainer>
-          <Button ref={active} data-filter="All" onClick={changeFilter}>All</Button>
-          <Button data-filter="Active" onClick={changeFilter}>Active</Button>
-          <Button data-filter="Finished" onClick={changeFilter}>Finished</Button>
-        </FiltersContainer>
-        <Button ref={clearSelectedBtn} onClick={clearSelected}>Clear completed</Button>
+      <p>{`${activeCounter} tasks left`}</p>
+      <FiltersContainer>
+        <Button ref={active} data-filter="All" onClick={changeFilter}>
+          All
+        </Button>
+        <Button data-filter="Active" onClick={changeFilter}>
+          Active
+        </Button>
+        <Button data-filter="Finished" onClick={changeFilter}>
+          Finished
+        </Button>
+      </FiltersContainer>
+      <Button ref={clearSelectedBtn} onClick={clearSelected}>
+        Clear completed
+      </Button>
     </FooterContainer>
   )
 }
