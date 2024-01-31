@@ -59,7 +59,6 @@ const SigninForm: FC<ISigninForm> = ({ switchState, switchForm }) => {
   }
   return (
     <form action="" className={rootClass.join(' ')} onSubmit={handleSubmit(processSignIn)}>
-      <TextField size='small' label="test"/>
       <StyledInput label="Login" size="small" {...register('login')} />
       <StyledInput type="password" label="Password" size="small" {...register('password')} />
       <StyledButton type="submit">Sign in</StyledButton>
